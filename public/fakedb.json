@@ -1,0 +1,25 @@
+[
+    {
+      "id": 1,
+      "name": "Full Body Transform",
+      "description": "The truth is that yes, you can change your body in 30 days. Naturally, you are unlikely to wake up on day 31 with the bulging biceps of a body builder, nor morph from couch surfer to swimsuit model either.",
+      "price": "250",
+      "img": "https://abctechweb.net/envato/templates/boosted/light/img/blog/2.jpg"
+      
+    },
+    {
+      "id": 2,
+      "name": "Beast Byceps",
+      "description": "Yes, you can do bicep curls every day as a tactic to improve the size of your arms. However, you might want to consider the daily volume is  necessary for you to train arms every day to see progress.",
+      "price": "200",
+      "img": "http://themes.potenzaglobalsolutions.com/html/luvfit/images/blog/02.jpg"
+      
+    },
+    {
+      "id": 3,
+      "name": "Fat to Fit Course",
+      "description": "Significant weight loss and muscle gains will take approximately eight weeks to see, however, even though you're not seeing muscle definition,the benefits going on in your body and mind.",
+      "price": "4",
+      "img": "http://themes.potenzaglobalsolutions.com/html/luvfit/images/blog/03.jpg "
+    }
+  ]

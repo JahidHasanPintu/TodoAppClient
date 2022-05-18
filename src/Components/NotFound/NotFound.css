@@ -1,0 +1,10 @@
+.notimg {
+  width: 100%;
+  text-align: center;
+}
+@media only screen and (max-width: 600px) {
+  .notimg {
+    margin-top: 50px;
+    margin-bottom: 150px;
+  }
+}
