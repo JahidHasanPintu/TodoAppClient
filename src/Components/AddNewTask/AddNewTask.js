@@ -1,5 +1,9 @@
 
+import { signOut } from 'firebase/auth';
 import React, { useRef, useState } from 'react';
+import { toast } from 'react-toastify';
+import auth from '../../firebase.init';
+import './AddNewTask.css'
 
 const AddNewTask = () => {
 
@@ -30,45 +34,32 @@ const AddNewTask = () => {
         .then(result =>{
             console.log(result);
             
-            // toast('task added successfully');
+            window.location.reload()
+            
+            
+            toast('task added successfully');
         })
         
         
         // console.log(JSON.stringify(taskData));
     };
+    //logout 
+    const logOut = () => {
+        signOut(auth)
+        
+    }
     return (
         <div>
             <div>
-              <section className='add-items-form'>
-                <form onSubmit={handleAddTask}>
-                <div className="container">
-                <div className="row justify-content-center">
-                    <div className="col-12 col-md-8 col-lg-8 col-xl-6">
-                    <div className="row">
-                        <div className="col text-center title">
-                        <h1>ADD NEW task</h1>
-                        </div>
-                    </div>
-                    <div className="row align-items-center">
-                        <div className="col mt-4">
-                        <input  ref={nameRef} type="text" className="form-control" placeholder="task Name" required/>
-                        </div>
-                    </div>
-                    <div className="row align-items-center mt-4">
-                        <div className="col">
-                        
-                        <textarea ref={descriptionRef} name="" id="" cols="32" rows="5" className="form-control" placeholder='Task description' required></textarea>
-                        </div>
-                    </div>
-                    <div className="row justify-content-start mt-4">
-                        <div className="col text-center">                      
-                        <button className="btn btn-primary mb-4">Submit</button>
-                        </div>
-                    </div>
-                    </div>
-                </div>
-                </div>
+            <button onClick={logOut} class="btn btn-active mt-2">Logout</button>
+              <section className='form'>
+                <form onSubmit={handleAddTask} className='text-center'>
+                <input type="text" ref={nameRef} placeholder="Task Name" class="input input-bordered input-primary w-full max-w-xs mt-2" required/> <br />
+                <input type="text" ref={descriptionRef} placeholder="Description here"  class="input input-bordered input-primary w-full max-w-xs mt-2" required/> <br />
+                <button className="btn btn-primary text-center mt-2">Add New</button>
+                 
                 </form>
+                
             </section>
         </div>
         </div>

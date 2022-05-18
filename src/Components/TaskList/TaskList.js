@@ -1,17 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { toast } from 'react-toastify';
 import useTasks from '../../hooks/useTasks';
+import './TaskList.css'
 
 
 const TaskList = () => {
     const [tasks,setTasks] = useTasks();
 
-      // Updating quantity
-    //   const quantityRef = useRef('');
+      // Updating complete status
       const handleComplete = id =>{
           
-          const isComplete=1
-          // for fron end show 
-          
+          const isComplete=1   
           const updatedTask = {isComplete};
               // send data to the server
           
@@ -26,16 +25,14 @@ const TaskList = () => {
           .then(res => res.json())
           .then(data =>{
               console.log('success', data);
-              alert('Task Completed successfully!!!');
-              // event.target.reset();
-              
-              
-              
+              toast('Task completed');
+            //   alert('Task Completed successfully!!!');  
+              window.location.reload()             
           })
           
           
       }
-    
+    // Deleting tasks 
     const handleDelete = id =>{
         const proceed = window.confirm( `Are you sure want to delete`);
         if(proceed){
@@ -49,34 +46,40 @@ const TaskList = () => {
             console.log(result);
             const remaining = tasks.filter(task=>task._id !== id);
             setTasks(remaining);
-           //  update.handleUpdate(_id);
+           
         })
         }
     }
     return (
-        <div className='services'>
-             <h1 className='title-text'>Task List</h1>
-            <div className="service-container row">
+        <div className='App'>
+             <div class="divider">Todo List</div>
+            <div className="task-card">
             {
                 tasks?.map(task => 
                        <div key={task._id}>
-                           <h2>{task.name}</h2>
+                           {/* <h2>{task.name}</h2>
                            <p>{task.description}</p>
                            <p>{task.isComplete}</p>
                            <h2 onClick={()=> handleDelete(task._id)}>X</h2>
-                           <h2 onClick={()=> handleComplete(task._id)}>U</h2>
+                           <h2 onClick={()=> handleComplete(task._id)}>U</h2> */}
+
+                            <div class="card w-96 bg-base-100 shadow-xl mt-3 task-card-details">
+                            
+                            <div class="card-body items-center text-center">
+                                <h2 style={{ textDecoration: task.isComplete ? 'line-through' : '' }} class="card-title">{task.name}</h2>
+                                <p style={{ textDecoration: task.isComplete ? 'line-through' : '' }}>{task.description}</p>
+                                <div class="card-actions">
+                                <button onClick={()=> handleComplete(task._id)} class="btn btn-primary">Complete</button>
+                                <button onClick={()=> handleDelete(task._id)} class="btn btn-primary">Delete </button>
+                                </div>
+                                
+                                
+                            </div>
+                            </div>
 
                        </div>
                 )
             }
-            {/* {
-                tasks?.map(task => <Task
-                    key= {task.id}
-                    task={task}
-                >  
-                       
-                </Task>)
-            } */}
             </div>
         </div>
     );
